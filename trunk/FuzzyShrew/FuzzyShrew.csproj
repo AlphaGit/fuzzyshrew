@@ -46,7 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ExportFormatBase.cs" />
     <Compile Include="FrmExportResults.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,10 +107,6 @@
     <ProjectReference Include="..\FuzzyShrew.BLL\FuzzyShrew.BLL.csproj">
       <Project>{9A6569A8-A0AF-450C-B586-F4648D98E522}</Project>
       <Name>FuzzyShrew.BLL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\FuzzyShrew.Model.Export\FuzzyShrew.Model.Export.csproj">
-      <Project>{AA5DAFC4-ABC2-436C-9DCC-F6C601364431}</Project>
-      <Name>FuzzyShrew.Model.Export</Name>
     </ProjectReference>
     <ProjectReference Include="..\FuzzyShrew.Model.Plugin\FuzzyShrew.Model.Plugin.csproj">
       <Project>{6DB28AE4-3FE4-4AA6-BE37-F529F79A1CF1}</Project>

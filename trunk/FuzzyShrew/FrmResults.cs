@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using FuzzyShrew.BLL;
 using FuzzyShrew.Model;
+using FuzzyShrew.Model.Export;
 
 namespace FuzzyShrew
 {
@@ -101,6 +102,13 @@ namespace FuzzyShrew
             var requestText = snapshot.Request.Method + ":" + snapshot.Request.RequestUri;
 
             MessageBox.Show(requestText);
+        }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            var exportForm = new FrmExportResults();
+            if (exportForm.ShowDialog(this) == DialogResult.OK)
+                ResultExporter.ExportResults(_snapshots, exportForm.Configuration);
         }
     }
 }
