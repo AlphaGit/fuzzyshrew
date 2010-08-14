@@ -42,18 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Formats\ExportFormatBase.cs" />
-    <Compile Include="Media\DiskFile\FrmDiskFileMediaConfiguration.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Media\DiskFile\FrmDiskFileMediaConfiguration.Designer.cs">
-      <DependentUpon>FrmDiskFileMediaConfiguration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Media\ExportMediaBase.cs" />
-    <Compile Include="Formats\Csv\CsvExportFormat.cs" />
-    <Compile Include="Media\DiskFile\DiskFileExportMedia.cs" />
     <Compile Include="PluginBase.cs" />
     <Compile Include="PluginLoader.cs" />
+    <Compile Include="PluginType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -61,11 +52,6 @@
       <Project>{B721744E-AD0A-42C8-9A84-5432965723A8}</Project>
       <Name>FuzzyShrew.Model</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Media\DiskFile\FrmDiskFileMediaConfiguration.resx">
-      <DependentUpon>FrmDiskFileMediaConfiguration.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -32,6 +32,7 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.lblResultsTitle = new System.Windows.Forms.Label();
+            this.btnExport = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgResults)).BeginInit();
             this.SuspendLayout();
             // 
@@ -81,11 +82,21 @@
             this.lblResultsTitle.TabIndex = 0;
             this.lblResultsTitle.Text = "Results:";
             // 
+            // btnExport
+            // 
+            this.btnExport.Location = new System.Drawing.Point(383, 235);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(75, 23);
+            this.btnExport.TabIndex = 4;
+            this.btnExport.Text = "Export...";
+            this.btnExport.UseVisualStyleBackColor = true;
+            // 
             // FrmResults
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(667, 270);
+            this.Controls.Add(this.btnExport);
             this.Controls.Add(this.lblResultsTitle);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnClose);
@@ -105,5 +116,6 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Label lblResultsTitle;
+        private System.Windows.Forms.Button btnExport;
     }
 }

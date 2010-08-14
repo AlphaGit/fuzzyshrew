@@ -30,6 +30,12 @@ namespace FuzzyShrew.Model.Plugin.Formats.Csv
             set { } 
         }
 
+        public override bool IsPluginConfigurationValid
+        {
+            get { return true; }
+            set { }
+        }
+
         protected override string FormatResults(List<RequestResponseSnapshot> results)
         {
             var formatted = FormatHeader(results.FirstOrDefault()) + Environment.NewLine;
