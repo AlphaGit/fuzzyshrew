@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using FuzzyShrew.Model.Plugin.Formats;
+using FuzzyShrew.Model.Plugin.Media;
 
 namespace FuzzyShrew.Model.Plugin
 {
@@ -14,16 +16,16 @@ namespace FuzzyShrew.Model.Plugin
 
     public static class PluginTypeExtensionMethods
     {
-        public static string[] GetTypeNames(this PluginType type)
+        public static Type[] GetTypes(this PluginType type)
         {
             switch (type)
             {
                 case PluginType.ExportFormatPlugin:
-                    return new string[] { "ExportFormatBase" };
+                    return new Type[] { typeof(ExportFormatBase) };
                 case PluginType.ExportMediaPlugin:
-                    return new string[] { "ExportMediaBase" };
+                    return new Type[] { typeof(ExportMediaBase) };
                 case PluginType.AllExport:
-                    return new string[] { "ExportFormatBase", "ExportMediaBase" };
+                    return new Type[] { typeof(ExportFormatBase), typeof(ExportMediaBase) };
                 default:
                     throw new ArgumentException("Invalid value for plugin type", "type");
             }

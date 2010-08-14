@@ -31,23 +31,23 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnExport = new System.Windows.Forms.Button();
             this.grpExportFormat = new System.Windows.Forms.GroupBox();
-            this.grpExportMedia = new System.Windows.Forms.GroupBox();
+            this.lblExportFormatDescription = new System.Windows.Forms.Label();
+            this.lblExportFormatAuthor = new System.Windows.Forms.Label();
+            this.lblExportFormatPluginDescriptionTitle = new System.Windows.Forms.Label();
+            this.lblExportFormatAuthorTitle = new System.Windows.Forms.Label();
             this.btnConfigureExportFormatPlugin = new System.Windows.Forms.Button();
             this.lnkReloadFormatPluginList = new System.Windows.Forms.LinkLabel();
             this.lblExportFormatTitle = new System.Windows.Forms.Label();
             this.cmbExportFormat = new System.Windows.Forms.ComboBox();
-            this.btnConfigureExporMedia = new System.Windows.Forms.Button();
-            this.lnkReloadMediaPlugins = new System.Windows.Forms.LinkLabel();
-            this.lblExportMediaTitle = new System.Windows.Forms.Label();
-            this.cmbExportMedia = new System.Windows.Forms.ComboBox();
-            this.lblExportFormatAuthorTitle = new System.Windows.Forms.Label();
-            this.lblExportFormatPluginDescriptionTitle = new System.Windows.Forms.Label();
-            this.lblExportFormatAuthor = new System.Windows.Forms.Label();
-            this.lblExportFormatDescription = new System.Windows.Forms.Label();
+            this.grpExportMedia = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.btnConfigureExporMedia = new System.Windows.Forms.Button();
+            this.lnkReloadMediaPlugins = new System.Windows.Forms.LinkLabel();
+            this.lblExportMediaTitle = new System.Windows.Forms.Label();
+            this.cmbExportMedia = new System.Windows.Forms.ComboBox();
             this.grpExportFormat.SuspendLayout();
             this.grpExportMedia.SuspendLayout();
             this.SuspendLayout();
@@ -92,24 +92,39 @@
             this.grpExportFormat.TabStop = false;
             this.grpExportFormat.Text = "Export format";
             // 
-            // grpExportMedia
+            // lblExportFormatDescription
             // 
-            this.grpExportMedia.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.grpExportMedia.Controls.Add(this.label1);
-            this.grpExportMedia.Controls.Add(this.label2);
-            this.grpExportMedia.Controls.Add(this.label3);
-            this.grpExportMedia.Controls.Add(this.label4);
-            this.grpExportMedia.Controls.Add(this.btnConfigureExporMedia);
-            this.grpExportMedia.Controls.Add(this.lnkReloadMediaPlugins);
-            this.grpExportMedia.Controls.Add(this.lblExportMediaTitle);
-            this.grpExportMedia.Controls.Add(this.cmbExportMedia);
-            this.grpExportMedia.Location = new System.Drawing.Point(11, 147);
-            this.grpExportMedia.Name = "grpExportMedia";
-            this.grpExportMedia.Size = new System.Drawing.Size(474, 129);
-            this.grpExportMedia.TabIndex = 5;
-            this.grpExportMedia.TabStop = false;
-            this.grpExportMedia.Text = "Export media";
+            this.lblExportFormatDescription.Location = new System.Drawing.Point(102, 69);
+            this.lblExportFormatDescription.Name = "lblExportFormatDescription";
+            this.lblExportFormatDescription.Size = new System.Drawing.Size(364, 47);
+            this.lblExportFormatDescription.TabIndex = 9;
+            // 
+            // lblExportFormatAuthor
+            // 
+            this.lblExportFormatAuthor.Location = new System.Drawing.Point(102, 56);
+            this.lblExportFormatAuthor.Name = "lblExportFormatAuthor";
+            this.lblExportFormatAuthor.Size = new System.Drawing.Size(364, 13);
+            this.lblExportFormatAuthor.TabIndex = 9;
+            // 
+            // lblExportFormatPluginDescriptionTitle
+            // 
+            this.lblExportFormatPluginDescriptionTitle.AutoSize = true;
+            this.lblExportFormatPluginDescriptionTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblExportFormatPluginDescriptionTitle.Location = new System.Drawing.Point(21, 69);
+            this.lblExportFormatPluginDescriptionTitle.Name = "lblExportFormatPluginDescriptionTitle";
+            this.lblExportFormatPluginDescriptionTitle.Size = new System.Drawing.Size(75, 13);
+            this.lblExportFormatPluginDescriptionTitle.TabIndex = 8;
+            this.lblExportFormatPluginDescriptionTitle.Text = "Description:";
+            // 
+            // lblExportFormatAuthorTitle
+            // 
+            this.lblExportFormatAuthorTitle.AutoSize = true;
+            this.lblExportFormatAuthorTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblExportFormatAuthorTitle.Location = new System.Drawing.Point(48, 56);
+            this.lblExportFormatAuthorTitle.Name = "lblExportFormatAuthorTitle";
+            this.lblExportFormatAuthorTitle.Size = new System.Drawing.Size(48, 13);
+            this.lblExportFormatAuthorTitle.TabIndex = 8;
+            this.lblExportFormatAuthorTitle.Text = "Author:";
             // 
             // btnConfigureExportFormatPlugin
             // 
@@ -150,6 +165,60 @@
             this.cmbExportFormat.Name = "cmbExportFormat";
             this.cmbExportFormat.Size = new System.Drawing.Size(380, 21);
             this.cmbExportFormat.TabIndex = 4;
+            this.cmbExportFormat.SelectedIndexChanged += new System.EventHandler(this.cmbExportFormat_SelectedIndexChanged);
+            // 
+            // grpExportMedia
+            // 
+            this.grpExportMedia.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpExportMedia.Controls.Add(this.label1);
+            this.grpExportMedia.Controls.Add(this.label2);
+            this.grpExportMedia.Controls.Add(this.label3);
+            this.grpExportMedia.Controls.Add(this.label4);
+            this.grpExportMedia.Controls.Add(this.btnConfigureExporMedia);
+            this.grpExportMedia.Controls.Add(this.lnkReloadMediaPlugins);
+            this.grpExportMedia.Controls.Add(this.lblExportMediaTitle);
+            this.grpExportMedia.Controls.Add(this.cmbExportMedia);
+            this.grpExportMedia.Location = new System.Drawing.Point(11, 147);
+            this.grpExportMedia.Name = "grpExportMedia";
+            this.grpExportMedia.Size = new System.Drawing.Size(474, 129);
+            this.grpExportMedia.TabIndex = 5;
+            this.grpExportMedia.TabStop = false;
+            this.grpExportMedia.Text = "Export media";
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(103, 69);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(364, 47);
+            this.label1.TabIndex = 12;
+            // 
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(103, 56);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(364, 13);
+            this.label2.TabIndex = 13;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(22, 69);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(75, 13);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "Description:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(49, 56);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(48, 13);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Author:";
             // 
             // btnConfigureExporMedia
             // 
@@ -190,74 +259,6 @@
             this.cmbExportMedia.Name = "cmbExportMedia";
             this.cmbExportMedia.Size = new System.Drawing.Size(380, 21);
             this.cmbExportMedia.TabIndex = 4;
-            // 
-            // lblExportFormatAuthorTitle
-            // 
-            this.lblExportFormatAuthorTitle.AutoSize = true;
-            this.lblExportFormatAuthorTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblExportFormatAuthorTitle.Location = new System.Drawing.Point(48, 56);
-            this.lblExportFormatAuthorTitle.Name = "lblExportFormatAuthorTitle";
-            this.lblExportFormatAuthorTitle.Size = new System.Drawing.Size(48, 13);
-            this.lblExportFormatAuthorTitle.TabIndex = 8;
-            this.lblExportFormatAuthorTitle.Text = "Author:";
-            // 
-            // lblExportFormatPluginDescriptionTitle
-            // 
-            this.lblExportFormatPluginDescriptionTitle.AutoSize = true;
-            this.lblExportFormatPluginDescriptionTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblExportFormatPluginDescriptionTitle.Location = new System.Drawing.Point(21, 69);
-            this.lblExportFormatPluginDescriptionTitle.Name = "lblExportFormatPluginDescriptionTitle";
-            this.lblExportFormatPluginDescriptionTitle.Size = new System.Drawing.Size(75, 13);
-            this.lblExportFormatPluginDescriptionTitle.TabIndex = 8;
-            this.lblExportFormatPluginDescriptionTitle.Text = "Description:";
-            // 
-            // lblExportFormatAuthor
-            // 
-            this.lblExportFormatAuthor.Location = new System.Drawing.Point(102, 56);
-            this.lblExportFormatAuthor.Name = "lblExportFormatAuthor";
-            this.lblExportFormatAuthor.Size = new System.Drawing.Size(364, 13);
-            this.lblExportFormatAuthor.TabIndex = 9;
-            // 
-            // lblExportFormatDescription
-            // 
-            this.lblExportFormatDescription.Location = new System.Drawing.Point(102, 69);
-            this.lblExportFormatDescription.Name = "lblExportFormatDescription";
-            this.lblExportFormatDescription.Size = new System.Drawing.Size(364, 47);
-            this.lblExportFormatDescription.TabIndex = 9;
-            // 
-            // label1
-            // 
-            this.label1.Location = new System.Drawing.Point(103, 69);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(364, 47);
-            this.label1.TabIndex = 12;
-            // 
-            // label2
-            // 
-            this.label2.Location = new System.Drawing.Point(103, 56);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(364, 13);
-            this.label2.TabIndex = 13;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(22, 69);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(75, 13);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "Description:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(49, 56);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(48, 13);
-            this.label4.TabIndex = 11;
-            this.label4.Text = "Author:";
             // 
             // FrmExportResults
             // 
