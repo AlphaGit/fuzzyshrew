@@ -10,14 +10,43 @@ namespace FuzzyShrew.Model.Plugin
 {
     public class PluginLoader
     {
-        public static PluginBase LoadPlugin(string fileName)
+        private static List<PluginBase> LoadPlugins(string fileName, string[] allowedTypes)
         {
+            var plugins = new List<PluginBase>();
+
             Assembly assembly = Assembly.LoadFile(fileName);
             foreach (Type type in assembly.GetTypes())
-                if (type.GetInterface("PluginBase") != null)
-                    return (PluginBase)Activator.CreateInstance(type);
+                foreach (var allowedType in allowedTypes)
+                    if (type.GetInterface(allowedType) != null)
+                        plugins.Add((PluginBase)Activator.CreateInstance(type));
 
-            return null;
+            return plugins;
+        }
+
+        public static List<PluginBase> LoadPlugins(string fileName)
+        {
+            return LoadPlugins(fileName, PluginType.AllExport);
+        }
+
+        public static List<PluginBase> LoadPlugins(string fileName, PluginType pluginType)
+        {
+            return LoadPlugins(fileName, pluginType.GetTypeNames());
+        }
+
+        public static List<PluginBase> LoadPluginFolder(string path)
+        {
+            return LoadPluginFolder(path, PluginType.AllExport);
+        }
+
+        public static List<PluginBase> LoadPluginFolder(string path, PluginType pluginType)
+        {
+            //TODO search for files in path
+            var fileName = string.Empty;
+            var plugins = new List<PluginBase>();
+
+            plugins.AddRange(LoadPlugins(fileName, pluginType));
+
+            return plugins;
         }
     }
 }

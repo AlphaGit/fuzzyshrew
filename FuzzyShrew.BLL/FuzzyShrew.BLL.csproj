@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PluginManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RequestProcessor.cs">
       <SubType>Component</SubType>
@@ -47,6 +48,14 @@
     <Compile Include="WebRequestHelper.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FuzzyShrew.Model.Export\FuzzyShrew.Model.Export.csproj">
+      <Project>{AA5DAFC4-ABC2-436C-9DCC-F6C601364431}</Project>
+      <Name>FuzzyShrew.Model.Export</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FuzzyShrew.Model.Plugin\FuzzyShrew.Model.Plugin.csproj">
+      <Project>{6DB28AE4-3FE4-4AA6-BE37-F529F79A1CF1}</Project>
+      <Name>FuzzyShrew.Model.Plugin</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FuzzyShrew.Model\FuzzyShrew.Model.csproj">
       <Project>{B721744E-AD0A-42C8-9A84-5432965723A8}</Project>
       <Name>FuzzyShrew.Model</Name>
