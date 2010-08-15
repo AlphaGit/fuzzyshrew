@@ -65,7 +65,7 @@ namespace FuzzyShrew.Model.Plugin
 
             try
             {
-                var files = Directory.EnumerateFiles(path, "*.dll");
+                var files = GetPluginFiles(path);
                 foreach (var file in files)
                     plugins.AddRange(LoadPlugins(file, pluginType));
             }
@@ -75,6 +75,34 @@ namespace FuzzyShrew.Model.Plugin
             }
 
             return plugins;
+        }
+
+        public static PluginBase SearchAndLoadPlugin(string path, string className)
+        {
+            var files = GetPluginFiles(path);
+            foreach (var file in files)
+            {
+                var plugin = LoadSpecificClass(file, className);
+                if (plugin != null)
+                    return (PluginBase)plugin;
+            }
+
+            return null;
+        }
+
+        private static object LoadSpecificClass(string fileName, string className)
+        {
+            Assembly assembly = Assembly.LoadFrom(fileName);
+            foreach (Type type in assembly.GetTypes())
+                if (type.FullName == className)
+                    return Activator.CreateInstance(type);
+
+            return null;
+        }
+
+        private static string[] GetPluginFiles(string folderPath)
+        {
+            return Directory.EnumerateFiles(folderPath, "*.dll", SearchOption.AllDirectories).ToArray();
         }
     }
 }

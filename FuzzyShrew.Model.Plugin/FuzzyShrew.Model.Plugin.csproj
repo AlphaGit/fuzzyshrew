@@ -44,18 +44,36 @@
   <ItemGroup>
     <Compile Include="ExportConfiguration.cs" />
     <Compile Include="Formats\ExportFormatBase.cs" />
+    <Compile Include="Formats\FormatConfigurationFormBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Media\ExportMediaBase.cs" />
+    <Compile Include="Media\MediaConfigurationFormBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="PluginBase.cs" />
     <Compile Include="PluginLoader.cs" />
     <Compile Include="PluginType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResultExporter.cs" />
+    <Compile Include="Variables\VariableConfigurationFormBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Variables\RequestResponseSnapshot.cs" />
+    <Compile Include="Variables\ResultExpressionSnapshot.cs" />
+    <Compile Include="Variables\VariableBase.cs" />
+    <Compile Include="Variables\VariableSnapshot.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FuzzyShrew.Model\FuzzyShrew.Model.csproj">
-      <Project>{B721744E-AD0A-42C8-9A84-5432965723A8}</Project>
-      <Name>FuzzyShrew.Model</Name>
-    </ProjectReference>
+    <EmbeddedResource Include="Formats\FormatConfigurationFormBase.resx">
+      <DependentUpon>FormatConfigurationFormBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Media\MediaConfigurationFormBase.resx">
+      <DependentUpon>MediaConfigurationFormBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Variables\VariableConfigurationFormBase.resx">
+      <DependentUpon>VariableConfigurationFormBase.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -6,6 +6,7 @@ using System.ComponentModel;
 using FuzzyShrew.Model;
 using System.Net;
 using System.IO;
+using FuzzyShrew.Model.Plugin.Variables;
 
 namespace FuzzyShrew.BLL
 {
@@ -74,7 +75,7 @@ namespace FuzzyShrew.BLL
 
             return resultSnapshotList;
         }
-        private List<VariableSnapshot> CreateVariablesSnapshot(List<Variable> list)
+        private List<VariableSnapshot> CreateVariablesSnapshot(List<VariableBase> list)
         {
             List<VariableSnapshot> snapshotList = new List<VariableSnapshot>();
             list.ForEach(v => snapshotList.Add(v.GetSnapshot()));

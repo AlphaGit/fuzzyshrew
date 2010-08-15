@@ -40,9 +40,6 @@
             this.colGetParameterValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grpVariables = new System.Windows.Forms.GroupBox();
             this.dgVariables = new System.Windows.Forms.DataGridView();
-            this.colVariablesVariableID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colVariableVariableSource = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.colVariableConfigure = new System.Windows.Forms.DataGridViewButtonColumn();
             this.btnHeaderAdd = new System.Windows.Forms.Button();
             this.btnHeaderRemove = new System.Windows.Forms.Button();
             this.btnGETParameterAdd = new System.Windows.Forms.Button();
@@ -67,6 +64,9 @@
             this.btnPOSTParameterAdd = new System.Windows.Forms.Button();
             this.btnPOSTParameterRemove = new System.Windows.Forms.Button();
             this.ddMethod = new System.Windows.Forms.ComboBox();
+            this.colVariablesVariableID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colVariableConfigure = new System.Windows.Forms.DataGridViewButtonColumn();
             this.grpHeaders.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgHeaders)).BeginInit();
             this.grpGETParameters.SuspendLayout();
@@ -199,34 +199,13 @@
             this.dgVariables.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgVariables.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colVariablesVariableID,
-            this.colVariableVariableSource,
+            this.Type,
             this.colVariableConfigure});
             this.dgVariables.Location = new System.Drawing.Point(6, 19);
             this.dgVariables.Name = "dgVariables";
             this.dgVariables.Size = new System.Drawing.Size(547, 86);
             this.dgVariables.TabIndex = 0;
             this.dgVariables.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgVariables_CellContentClick);
-            this.dgVariables.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgVariables_CellValidated);
-            // 
-            // colVariablesVariableID
-            // 
-            this.colVariablesVariableID.DataPropertyName = "VariableID";
-            this.colVariablesVariableID.FillWeight = 127.1574F;
-            this.colVariablesVariableID.HeaderText = "Variable ID";
-            this.colVariablesVariableID.Name = "colVariablesVariableID";
-            // 
-            // colVariableVariableSource
-            // 
-            this.colVariableVariableSource.FillWeight = 127.1574F;
-            this.colVariableVariableSource.HeaderText = "Variable Source";
-            this.colVariableVariableSource.Name = "colVariableVariableSource";
-            // 
-            // colVariableConfigure
-            // 
-            this.colVariableConfigure.FillWeight = 45.68528F;
-            this.colVariableConfigure.HeaderText = "Configure";
-            this.colVariableConfigure.Name = "colVariableConfigure";
-            this.colVariableConfigure.Text = "...";
             // 
             // btnHeaderAdd
             // 
@@ -477,6 +456,27 @@
             this.ddMethod.TabIndex = 16;
             this.ddMethod.SelectedIndexChanged += new System.EventHandler(this.ddMethod_SelectedIndexChanged);
             // 
+            // colVariablesVariableID
+            // 
+            this.colVariablesVariableID.DataPropertyName = "VariableID";
+            this.colVariablesVariableID.FillWeight = 127.1574F;
+            this.colVariablesVariableID.HeaderText = "Variable ID";
+            this.colVariablesVariableID.Name = "colVariablesVariableID";
+            // 
+            // Type
+            // 
+            this.Type.DataPropertyName = "Name";
+            this.Type.HeaderText = "Type";
+            this.Type.Name = "Type";
+            this.Type.ReadOnly = true;
+            // 
+            // colVariableConfigure
+            // 
+            this.colVariableConfigure.FillWeight = 45.68528F;
+            this.colVariableConfigure.HeaderText = "Configure";
+            this.colVariableConfigure.Name = "colVariableConfigure";
+            this.colVariableConfigure.Text = "...";
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -550,9 +550,6 @@
         private System.Windows.Forms.Button btnExpressionAdd;
         private System.Windows.Forms.Button btnExpressionRemove;
         private System.Windows.Forms.Button btnStart;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colVariablesVariableID;
-        private System.Windows.Forms.DataGridViewComboBoxColumn colVariableVariableSource;
-        private System.Windows.Forms.DataGridViewButtonColumn colVariableConfigure;
         private System.Windows.Forms.Button btnSaveConfiguration;
         private System.Windows.Forms.Button btnLoadConfiguration;
         private System.Windows.Forms.OpenFileDialog ofOpenConfig;
@@ -564,6 +561,9 @@
         private System.Windows.Forms.Button btnPOSTParameterAdd;
         private System.Windows.Forms.Button btnPOSTParameterRemove;
         private System.Windows.Forms.ComboBox ddMethod;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colVariablesVariableID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Type;
+        private System.Windows.Forms.DataGridViewButtonColumn colVariableConfigure;
     }
 }
 

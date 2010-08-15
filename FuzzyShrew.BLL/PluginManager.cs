@@ -5,6 +5,7 @@ using System.Text;
 using FuzzyShrew.Model.Plugin.Formats;
 using FuzzyShrew.Model.Plugin;
 using FuzzyShrew.Model.Plugin.Media;
+using FuzzyShrew.Model.Plugin.Variables;
 
 namespace FuzzyShrew.BLL
 {
@@ -20,6 +21,17 @@ namespace FuzzyShrew.BLL
         {
             var plugins = PluginLoader.LoadPluginFolder(Configuration.Instance.PluginPath, PluginType.ExportMediaPlugin);
             return plugins.Select(p => (ExportMediaBase)p).ToList();
+        }
+
+        public static List<VariableBase> LoadVariablePlugins()
+        {
+            var plugins = PluginLoader.LoadPluginFolder(Configuration.Instance.PluginPath, PluginType.VariablePlugin);
+            return plugins.Select(p => (VariableBase)p).ToList();
+        }
+
+        public static PluginBase SearchAndLoadPlugin(string pluginClassName)
+        {
+            return PluginLoader.SearchAndLoadPlugin(Configuration.Instance.PluginPath, pluginClassName);
         }
     }
 }

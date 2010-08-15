@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmVariableTypeSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmVariableTypeSelector.Designer.cs">
+      <DependentUpon>FrmVariableTypeSelector.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmExportResults.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +78,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmVariableTypeSelector.resx">
+      <DependentUpon>FrmVariableTypeSelector.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmExportResults.resx">
       <DependentUpon>FrmExportResults.cs</DependentUpon>
     </EmbeddedResource>
@@ -118,6 +127,28 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>echo del /q "$(TargetDir)plugins"
+del /q "$(TargetDir)plugins"
+echo.
+
+echo mkdir "$(TargetDir)plugins"
+mkdir "$(TargetDir)plugins"
+echo.
+
+echo copy "$(SolutionDir)FuzzyShrew.Model.Plugin.Formats.Csv\bin\$(ConfigurationName)\FuzzyShrew.Model.Plugin.Formats.Csv.dll" "$(TargetDir)plugins\FuzzyShrew.Model.Plugin.Formats.Csv.dll"
+copy "$(SolutionDir)FuzzyShrew.Model.Plugin.Formats.Csv\bin\$(ConfigurationName)\FuzzyShrew.Model.Plugin.Formats.Csv.dll" "$(TargetDir)plugins\FuzzyShrew.Model.Plugin.Formats.Csv.dll"
+echo.
+
+echo copy "$(SolutionDir)FuzzyShrew.Model.Plugin.Media.DiskFile\bin\$(ConfigurationName)\FuzzyShrew.Model.Plugin.Media.DiskFile.dll" "$(TargetDir)plugins\FuzzyShrew.Model.Plugin.Media.DiskFile.dll"
+copy "$(SolutionDir)FuzzyShrew.Model.Plugin.Media.DiskFile\bin\$(ConfigurationName)\FuzzyShrew.Model.Plugin.Media.DiskFile.dll" "$(TargetDir)plugins\FuzzyShrew.Model.Plugin.Media.DiskFile.dll"
+echo.
+
+echo copy "$(SolutionDir)FuzzyShrew.Model.Plugin.Variables.Counter\bin\$(ConfigurationName)\FuzzyShrew.Model.Plugin.Variables.Counter.dll" "$(TargetDir)plugins\FuzzyShrew.Model.Plugin.Variables.Counter.dll"
+copy "$(SolutionDir)FuzzyShrew.Model.Plugin.Variables.Counter\bin\$(ConfigurationName)\FuzzyShrew.Model.Plugin.Variables.Counter.dll" "$(TargetDir)plugins\FuzzyShrew.Model.Plugin.Variables.Counter.dll"
+echo.
+</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

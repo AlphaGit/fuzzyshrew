@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using FuzzyShrew.Model.Plugin.Formats;
 using FuzzyShrew.Model.Plugin.Media;
+using FuzzyShrew.Model.Plugin.Variables;
 
 namespace FuzzyShrew.Model.Plugin
 {
@@ -11,6 +12,7 @@ namespace FuzzyShrew.Model.Plugin
     {
         ExportFormatPlugin,
         ExportMediaPlugin,
+        VariablePlugin,
         AllExport
     }
 
@@ -24,6 +26,8 @@ namespace FuzzyShrew.Model.Plugin
                     return new Type[] { typeof(ExportFormatBase) };
                 case PluginType.ExportMediaPlugin:
                     return new Type[] { typeof(ExportMediaBase) };
+                case PluginType.VariablePlugin:
+                    return new Type[] { typeof(VariableBase) };
                 case PluginType.AllExport:
                     return new Type[] { typeof(ExportFormatBase), typeof(ExportMediaBase) };
                 default:
