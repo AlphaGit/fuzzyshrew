@@ -4,21 +4,22 @@ using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
 using System.Xml;
+using FuzzyShrew.Model.Plugin.Variables;
+using FuzzyShrew.Model.Plugin;
 
 namespace FuzzyShrew.Model
 {
     [XmlInclude(typeof(HTTPHeader))]
     [XmlInclude(typeof(Parameter))]
     [XmlInclude(typeof(ResultExpression))]
-    [XmlInclude(typeof(Variable))]
-    [XmlInclude(typeof(FuzzyShrew.Model.VariableSources.CounterVariableSource.CounterVariableSource))]
+    [XmlInclude(typeof(VariableBase))]
     public class Session
     {
         public List<HTTPHeader> Headers { get; set; }
         public List<Parameter> GetParameters { get; set; }
         public List<Parameter> PostParameters { get; set; }
         public List<ResultExpression> ResultExpressions { get; set; }
-        public List<Variable> Variables { get; set; }
+        public List<VariableBase> Variables { get; set; }
         public string Url { get; set; }
         public string Method { get; set; }
 
@@ -28,9 +29,9 @@ namespace FuzzyShrew.Model
             GetParameters = new List<Parameter>();
             PostParameters = new List<Parameter>();
             ResultExpressions = new List<ResultExpression>();
-            Variables = new List<Variable>();
+            Variables = new List<VariableBase>();
         }
-        public Session(List<HTTPHeader> headers, List<Parameter> getParameters, List<Parameter> postParameters, List<Variable> variables, List<ResultExpression> resultExpressions, string url, string method)
+        public Session(List<HTTPHeader> headers, List<Parameter> getParameters, List<Parameter> postParameters, List<VariableBase> variables, List<ResultExpression> resultExpressions, string url, string method)
         {
             Headers = headers;
             GetParameters = getParameters;
@@ -41,39 +42,12 @@ namespace FuzzyShrew.Model
             Method = method;
         }
 
-        public void Save(string fileName)
-        {
-            var writer = XmlWriter.Create(fileName, 
-                new XmlWriterSettings() {
-                    CloseOutput = true,
-                    Encoding = Encoding.UTF8,
-                    Indent = true,
-                    IndentChars = "\t",
-                    OmitXmlDeclaration = true
-                });
-
-            XmlSerializer x = new XmlSerializer(this.GetType());
-            x.Serialize(writer, this);
-        }
-
-        public static Session Load(string fileName)
-        {
-            var reader = XmlReader.Create(fileName,
-                new XmlReaderSettings()
-                {
-                    CloseInput = true
-                });
-
-            XmlSerializer x = new XmlSerializer(typeof(Session));
-            return (Session) x.Deserialize(reader);
-        }
-
         public string ApplyVariables(string originalString)
         {
             string newString = originalString;
 
             Variables.ForEach(v =>
-                newString = newString.Replace(v.VariableID, v.Source.GetValue())
+                newString = newString.Replace(v.VariableID, v.GetValue())
             );
 
             return newString;

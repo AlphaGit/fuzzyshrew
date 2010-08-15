@@ -40,10 +40,10 @@
             this.lblExportFormatTitle = new System.Windows.Forms.Label();
             this.cmbExportFormat = new System.Windows.Forms.ComboBox();
             this.grpExportMedia = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblExportMediaDescription = new System.Windows.Forms.Label();
+            this.lblExportMediaAuthor = new System.Windows.Forms.Label();
+            this.lblExportMediaDescriptionTitle = new System.Windows.Forms.Label();
+            this.lblExportMediaAuthorTitle = new System.Windows.Forms.Label();
             this.btnConfigureExporMedia = new System.Windows.Forms.Button();
             this.lnkReloadMediaPlugins = new System.Windows.Forms.LinkLabel();
             this.lblExportMediaTitle = new System.Windows.Forms.Label();
@@ -62,6 +62,7 @@
             this.btnCancel.TabIndex = 4;
             this.btnCancel.Text = "&Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnExport
             // 
@@ -72,6 +73,7 @@
             this.btnExport.TabIndex = 4;
             this.btnExport.Text = "&Export";
             this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
             // grpExportFormat
             // 
@@ -135,6 +137,7 @@
             this.btnConfigureExportFormatPlugin.TabIndex = 7;
             this.btnConfigureExportFormatPlugin.Text = "Configure...";
             this.btnConfigureExportFormatPlugin.UseVisualStyleBackColor = true;
+            this.btnConfigureExportFormatPlugin.Click += new System.EventHandler(this.btnConfigureExportFormatPlugin_Click);
             // 
             // lnkReloadFormatPluginList
             // 
@@ -146,6 +149,7 @@
             this.lnkReloadFormatPluginList.TabIndex = 6;
             this.lnkReloadFormatPluginList.TabStop = true;
             this.lnkReloadFormatPluginList.Text = "(Reload format plugins)";
+            this.lnkReloadFormatPluginList.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkReloadFormatPluginList_LinkClicked);
             // 
             // lblExportFormatTitle
             // 
@@ -171,10 +175,10 @@
             // 
             this.grpExportMedia.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.grpExportMedia.Controls.Add(this.label1);
-            this.grpExportMedia.Controls.Add(this.label2);
-            this.grpExportMedia.Controls.Add(this.label3);
-            this.grpExportMedia.Controls.Add(this.label4);
+            this.grpExportMedia.Controls.Add(this.lblExportMediaDescription);
+            this.grpExportMedia.Controls.Add(this.lblExportMediaAuthor);
+            this.grpExportMedia.Controls.Add(this.lblExportMediaDescriptionTitle);
+            this.grpExportMedia.Controls.Add(this.lblExportMediaAuthorTitle);
             this.grpExportMedia.Controls.Add(this.btnConfigureExporMedia);
             this.grpExportMedia.Controls.Add(this.lnkReloadMediaPlugins);
             this.grpExportMedia.Controls.Add(this.lblExportMediaTitle);
@@ -186,39 +190,39 @@
             this.grpExportMedia.TabStop = false;
             this.grpExportMedia.Text = "Export media";
             // 
-            // label1
+            // lblExportMediaDescription
             // 
-            this.label1.Location = new System.Drawing.Point(103, 69);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(364, 47);
-            this.label1.TabIndex = 12;
+            this.lblExportMediaDescription.Location = new System.Drawing.Point(103, 69);
+            this.lblExportMediaDescription.Name = "lblExportMediaDescription";
+            this.lblExportMediaDescription.Size = new System.Drawing.Size(364, 47);
+            this.lblExportMediaDescription.TabIndex = 12;
             // 
-            // label2
+            // lblExportMediaAuthor
             // 
-            this.label2.Location = new System.Drawing.Point(103, 56);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(364, 13);
-            this.label2.TabIndex = 13;
+            this.lblExportMediaAuthor.Location = new System.Drawing.Point(103, 56);
+            this.lblExportMediaAuthor.Name = "lblExportMediaAuthor";
+            this.lblExportMediaAuthor.Size = new System.Drawing.Size(364, 13);
+            this.lblExportMediaAuthor.TabIndex = 13;
             // 
-            // label3
+            // lblExportMediaDescriptionTitle
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(22, 69);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(75, 13);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "Description:";
+            this.lblExportMediaDescriptionTitle.AutoSize = true;
+            this.lblExportMediaDescriptionTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblExportMediaDescriptionTitle.Location = new System.Drawing.Point(22, 69);
+            this.lblExportMediaDescriptionTitle.Name = "lblExportMediaDescriptionTitle";
+            this.lblExportMediaDescriptionTitle.Size = new System.Drawing.Size(75, 13);
+            this.lblExportMediaDescriptionTitle.TabIndex = 10;
+            this.lblExportMediaDescriptionTitle.Text = "Description:";
             // 
-            // label4
+            // lblExportMediaAuthorTitle
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(49, 56);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(48, 13);
-            this.label4.TabIndex = 11;
-            this.label4.Text = "Author:";
+            this.lblExportMediaAuthorTitle.AutoSize = true;
+            this.lblExportMediaAuthorTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblExportMediaAuthorTitle.Location = new System.Drawing.Point(49, 56);
+            this.lblExportMediaAuthorTitle.Name = "lblExportMediaAuthorTitle";
+            this.lblExportMediaAuthorTitle.Size = new System.Drawing.Size(48, 13);
+            this.lblExportMediaAuthorTitle.TabIndex = 11;
+            this.lblExportMediaAuthorTitle.Text = "Author:";
             // 
             // btnConfigureExporMedia
             // 
@@ -229,6 +233,7 @@
             this.btnConfigureExporMedia.TabIndex = 7;
             this.btnConfigureExporMedia.Text = "Configure...";
             this.btnConfigureExporMedia.UseVisualStyleBackColor = true;
+            this.btnConfigureExporMedia.Click += new System.EventHandler(this.btnConfigureExporMedia_Click);
             // 
             // lnkReloadMediaPlugins
             // 
@@ -240,6 +245,7 @@
             this.lnkReloadMediaPlugins.TabIndex = 6;
             this.lnkReloadMediaPlugins.TabStop = true;
             this.lnkReloadMediaPlugins.Text = "(Reload media plugins)";
+            this.lnkReloadMediaPlugins.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkReloadMediaPlugins_LinkClicked);
             // 
             // lblExportMediaTitle
             // 
@@ -259,6 +265,7 @@
             this.cmbExportMedia.Name = "cmbExportMedia";
             this.cmbExportMedia.Size = new System.Drawing.Size(380, 21);
             this.cmbExportMedia.TabIndex = 4;
+            this.cmbExportMedia.SelectedIndexChanged += new System.EventHandler(this.cmbExportMedia_SelectedIndexChanged);
             // 
             // FrmExportResults
             // 
@@ -305,9 +312,9 @@
         private System.Windows.Forms.Label lblExportFormatPluginDescriptionTitle;
         private System.Windows.Forms.Label lblExportFormatDescription;
         private System.Windows.Forms.Label lblExportFormatAuthor;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblExportMediaDescription;
+        private System.Windows.Forms.Label lblExportMediaAuthor;
+        private System.Windows.Forms.Label lblExportMediaDescriptionTitle;
+        private System.Windows.Forms.Label lblExportMediaAuthorTitle;
     }
 }

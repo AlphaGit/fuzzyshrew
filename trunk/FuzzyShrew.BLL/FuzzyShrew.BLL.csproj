@@ -46,6 +46,7 @@
     <Compile Include="RequestProcessor.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="SessionManager.cs" />
     <Compile Include="WebRequestHelper.cs" />
   </ItemGroup>
   <ItemGroup>

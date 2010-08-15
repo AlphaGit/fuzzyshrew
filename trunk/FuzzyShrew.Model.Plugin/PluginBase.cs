@@ -11,5 +11,6 @@ namespace FuzzyShrew.Model.Plugin
         public abstract string Author { get; }
         public abstract string Description { get; }
         public abstract bool IsPluginConfigurationValid();
+        public abstract void ShowConfigurationForm(System.Windows.Forms.IWin32Window owner);
     }
 }

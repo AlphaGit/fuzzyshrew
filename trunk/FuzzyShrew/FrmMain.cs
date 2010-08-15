@@ -7,14 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using FuzzyShrew.Model;
-using FuzzyShrew.Model.VariableSources;
+using FuzzyShrew.Model.Plugin.Variables;
+using FuzzyShrew.BLL;
 
 namespace FuzzyShrew
 {
     public partial class FrmMain : Form
     {
         private BindingList<HTTPHeader> _headers;
-        private BindingList<Variable> _variables;
+        private BindingList<VariableBase> _variables;
         private BindingList<Parameter> _getParameters;
         private BindingList<Parameter> _postParameters;
         private BindingList<ResultExpression> _resultExpressions;
@@ -27,8 +28,6 @@ namespace FuzzyShrew
             CustomInitalizeComponent();
             InitalizeSimpleVariables();
             InitalizeLists();
-
-            FillVariableTypesCombo();
         }
 
         private void InitalizeSimpleVariables()
@@ -36,13 +35,6 @@ namespace FuzzyShrew
             _url = string.Empty;
             ddMethod.SelectedIndex = 0;
             _method = "GET";
-        }
-
-        private void FillVariableTypesCombo()
-        {
-            var variableTypeNames = new VariableSourceType().GetType().GetEnumNames();
-            foreach (var type in variableTypeNames)
-                colVariableVariableSource.Items.Add(type);
         }
 
         private void CustomInitalizeComponent()
@@ -55,7 +47,7 @@ namespace FuzzyShrew
         private void InitalizeLists()
         {
             _headers = new BindingList<HTTPHeader>();
-            _variables = new BindingList<Variable>();
+            _variables = new BindingList<VariableBase>();
             _getParameters = new BindingList<Parameter>();
             _postParameters = new BindingList<Parameter>();
             _resultExpressions = new BindingList<ResultExpression>();
@@ -69,9 +61,9 @@ namespace FuzzyShrew
                 var grid = (DataGridView)sender;
                 if (e.RowIndex < 0) return;
 
-                var variable = (Variable)grid.Rows[e.RowIndex].DataBoundItem;
+                var variable = (VariableBase)grid.Rows[e.RowIndex].DataBoundItem;
 
-                if (variable != null) variable.Source.ShowConfigurationForm(this);
+                if (variable != null) variable.ShowConfigurationForm(this);
             }
         }
 
@@ -85,6 +77,7 @@ namespace FuzzyShrew
             RefreshHeadersDataSource();
             RefreshVariablesDataSource();
             RefreshGETParametersDataSource();
+            RefreshPOSTParametersDataSource();
             RefreshResultExpressionsDataSource();
         }
 
@@ -96,6 +89,11 @@ namespace FuzzyShrew
         private void RefreshGETParametersDataSource()
         {
             dgGETParameters.DataSource = _getParameters;
+        }
+
+        private void RefreshPOSTParametersDataSource()
+        {
+            dgPOSTParameters.DataSource = _postParameters;
         }
 
         private void RefreshVariablesDataSource()
@@ -147,7 +145,14 @@ namespace FuzzyShrew
 
         private void btnVariableAdd_Click(object sender, EventArgs e)
         {
-            _variables.Add(new Variable());
+            using (var variableSelector = new FrmVariableTypeSelector())
+            {
+                if (variableSelector.ShowDialog(this) == DialogResult.OK)
+                {
+                    _variables.Add(variableSelector.SelectedVariable);
+                    RefreshVariablesDataSource();
+                }
+            }
         }
 
         private void btnVariableRemove_Click(object sender, EventArgs e)
@@ -157,25 +162,10 @@ namespace FuzzyShrew
                 _variables.Remove(variable);
         }
 
-        private Variable GetSelectedVariable()
+        private VariableBase GetSelectedVariable()
         {
             if (dgVariables.SelectedRows.Count == 0) return null;
-            return (Variable)dgVariables.SelectedRows[0].DataBoundItem;
-        }
-
-        private void dgVariables_CellValidated(object sender, DataGridViewCellEventArgs e)
-        {
-            // if we are on the variable source type column
-            if (e.ColumnIndex == colVariableVariableSource.Index)
-            {
-                if (e.RowIndex < 0) return;
-
-                var variable = (Variable)dgVariables.Rows[e.RowIndex].DataBoundItem;
-
-                if (variable == null) return;
-
-                variable.SetNewSource((string)dgVariables.CurrentCell.Value);
-            }
+            return (VariableBase)dgVariables.SelectedRows[0].DataBoundItem;
         }
 
         private void btnExpressionAdd_Click(object sender, EventArgs e)
@@ -224,7 +214,7 @@ namespace FuzzyShrew
             if (sdSaveConfig.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
             {
                 var session = GenerateSession();
-                session.Save(sdSaveConfig.FileName);
+                SessionManager.Save(session, sdSaveConfig.FileName);
             }
         }
 
@@ -237,14 +227,16 @@ namespace FuzzyShrew
         {
             if (ofOpenConfig.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
             {
-                var session = Session.Load(ofOpenConfig.FileName);
+                var session = SessionManager.Load(ofOpenConfig.FileName);
                 this._getParameters = new BindingList<Parameter>(session.GetParameters);
+                this._postParameters = new BindingList<Parameter>(session.PostParameters);
                 this._headers = new BindingList<HTTPHeader>(session.Headers);
                 this._resultExpressions = new BindingList<ResultExpression>(session.ResultExpressions);
                 this._url = session.Url;
-                this._variables = new BindingList<Variable>(session.Variables);
+                this._variables = new BindingList<VariableBase>(session.Variables);
 
                 RefreshGETParametersDataSource();
+                RefreshPOSTParametersDataSource();
                 RefreshHeadersDataSource();
                 RefreshResultExpressionsDataSource();
                 RefreshVariablesDataSource();

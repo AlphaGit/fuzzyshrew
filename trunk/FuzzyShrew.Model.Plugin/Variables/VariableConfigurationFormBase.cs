@@ -4,16 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace FuzzyShrew.Model.VariableSources
+namespace FuzzyShrew.Model.Plugin.Variables
 {
-    public class ConfigurationFormBase: Form
+    public class VariableConfigurationFormBase: Form
     {
-        public VariableSourceBase VariableToConfigure { get; set; }
-        public ConfigurationFormBase()
+        public VariableBase VariableToConfigure { get; set; }
+        public VariableConfigurationFormBase()
         {
 
         }
-        public ConfigurationFormBase(VariableSourceBase variable): base()
+        public VariableConfigurationFormBase(VariableBase variable): base()
         {
             VariableToConfigure = variable;
         }
@@ -26,9 +26,8 @@ namespace FuzzyShrew.Model.VariableSources
             // 
             this.ClientSize = new System.Drawing.Size(292, 266);
             this.Name = "ConfigurationFormBase";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.ResumeLayout(false);
-
         }
     }
 }
