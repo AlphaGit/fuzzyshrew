@@ -12,11 +12,15 @@ namespace FuzzyShrew.Model.Plugin.Formats.Csv
         public List<CsvField> ChildFields { get; set; }
         public string FieldName { get; set; }
         public bool ShowField { get; set; }
-        private bool WasChildrenPopulated { get; set; }
 
-        public static List<CsvField> GetAllChildFields(Type type)
+        public CsvField()
         {
-            return type
+            ChildFields = new List<CsvField>();
+        }
+
+        public void PopulateChildFields()
+        {
+            this.ChildFields = ClassType
                 .GetProperties()
                 .Where(p => p.CanRead)
                 .ToList()
