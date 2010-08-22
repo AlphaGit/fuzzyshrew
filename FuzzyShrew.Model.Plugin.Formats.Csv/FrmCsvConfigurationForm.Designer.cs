@@ -30,7 +30,7 @@
         {
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.tvPropertiesTree = new System.Windows.Forms.TreeView();
             this.chkShowTitles = new System.Windows.Forms.CheckBox();
             this.chkUseQuotationMarksForAll = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
@@ -57,13 +57,16 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // treeView1
+            // tvPropertiesTree
             // 
-            this.treeView1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.treeView1.Location = new System.Drawing.Point(261, 84);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(121, 97);
-            this.treeView1.TabIndex = 3;
+            this.tvPropertiesTree.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.tvPropertiesTree.CheckBoxes = true;
+            this.tvPropertiesTree.Location = new System.Drawing.Point(12, 72);
+            this.tvPropertiesTree.Name = "tvPropertiesTree";
+            this.tvPropertiesTree.Size = new System.Drawing.Size(370, 109);
+            this.tvPropertiesTree.TabIndex = 3;
+            this.tvPropertiesTree.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.tvPropertiesTree_AfterCheck);
+            this.tvPropertiesTree.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvPropertiesTree_NodeMouseDoubleClick);
             // 
             // chkShowTitles
             // 
@@ -95,7 +98,7 @@
             this.ClientSize = new System.Drawing.Size(394, 219);
             this.Controls.Add(this.chkUseQuotationMarksForAll);
             this.Controls.Add(this.chkShowTitles);
-            this.Controls.Add(this.treeView1);
+            this.Controls.Add(this.tvPropertiesTree);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOk);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -111,7 +114,7 @@
 
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.TreeView tvPropertiesTree;
         private System.Windows.Forms.CheckBox chkShowTitles;
         private System.Windows.Forms.CheckBox chkUseQuotationMarksForAll;
     }

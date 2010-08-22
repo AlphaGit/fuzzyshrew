@@ -74,7 +74,7 @@ namespace FuzzyShrew.Model.Plugin.Formats.Csv
         {
             using (var config = new FrmCsvConfigurationForm(this.Clone()))
             {
-                if (config.DialogResult == System.Windows.Forms.DialogResult.OK)
+                if (config.ShowDialog(owner) == System.Windows.Forms.DialogResult.OK)
                     GetValuesFrom((CsvExportFormat) config.FormatToConfigure);
             }
         }
