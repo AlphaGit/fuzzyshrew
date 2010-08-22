@@ -23,7 +23,6 @@ namespace FuzzyShrew.Model.Plugin
                     foreach (var allowedType in allowedTypes)
                         if (allowedType.IsAssignableFrom(type))
                             plugins.Add((PluginBase)Activator.CreateInstance(type));
-
             }
             catch (BadImageFormatException ex)
             {

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Net;
+using FuzzyShrew.Model.Plugin.Variables;
+using System.Reflection;
 
 namespace FuzzyShrew.Model
 {

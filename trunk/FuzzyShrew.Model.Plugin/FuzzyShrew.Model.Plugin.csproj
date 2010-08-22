@@ -59,8 +59,8 @@
     <Compile Include="Variables\VariableConfigurationFormBase.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Variables\RequestResponseSnapshot.cs" />
-    <Compile Include="Variables\ResultExpressionSnapshot.cs" />
+    <Compile Include="RequestResponseSnapshot.cs" />
+    <Compile Include="ResultExpressionSnapshot.cs" />
     <Compile Include="Variables\VariableBase.cs" />
     <Compile Include="Variables\VariableSnapshot.cs" />
   </ItemGroup>
